@@ -33,10 +33,13 @@ class Dot:
         ) ** 0.5
 
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
+        if isinstance(other, list):
+            return self in other
+        else:
+            return self.x == other.x and self.y == other.y
 
     def __hash__(self):
-        return hash(f'Dot x: {self.x}, y: {self.y}')
+        return hash((self.x, self.y))
 
     def __str__(self):
         return f'x: {self.x}, y: {self.y}'
@@ -100,12 +103,16 @@ def get_xy(dots):
     return x, y
 
 
-def show_dots(dots, centers):
+def show_dots(dots, centers=None, color=None):
     fig, ax = plt.subplots()
     x, y = get_xy(dots)
-    ax.scatter(x, y)
-    x_center, y_center = get_xy(centers)
-    ax.scatter(x_center, y_center, edgecolors='g')
+    kw = {}
+    if color:
+        kw['edgecolors'] = color
+    ax.scatter(x, y, **kw)
+    if centers:
+        x_center, y_center = get_xy(centers)
+        ax.scatter(x_center, y_center, edgecolors='g')
     fig.savefig('dots.png')
     plt.show()
 
