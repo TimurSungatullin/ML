@@ -42,7 +42,7 @@ class Dot:
         return f'x: {self.x}, y: {self.y}'
 
 
-def create_random_dots(min_v, max_v, count):
+def create_random_dots(min_v=MIN_V, max_v=MAX_V, count=COUNT):
     dots = [Dot.create_random_dot(min_v, max_v) for _ in range(count)]
     return dots
 
@@ -195,7 +195,7 @@ def get_best_clusters(dots):
 
 
 def main():
-    dots = create_random_dots(MIN_V, MAX_V, COUNT)
+    dots = create_random_dots()
     clusters = get_best_clusters(dots)
     show_dots(
         list(chain.from_iterable(clusters.values())),
