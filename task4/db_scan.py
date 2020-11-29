@@ -82,7 +82,6 @@ def main():
                 clusters[neighbour.cluster].append(dot)
 
     show_clusters(clusters)
-    print(1)
 
 
 if __name__ == '__main__':
