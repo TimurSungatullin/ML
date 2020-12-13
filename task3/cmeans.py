@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import math
 
 
-def update_center(c, count, f_m, dots, v_centers):
+def update_center(c, count, f_m, dots, v_centers, m):
     # Уточнение центров
     for i in range(c):
         sum_f_m = 0
@@ -90,7 +90,7 @@ def main():
     max_v = e + 1
     while max_v > e:
 
-        v_centers = update_center(c, count, f_m, dots, v_centers)
+        v_centers = update_center(c, count, f_m, dots, v_centers, m)
 
         dist_m = calc_dist(c, count, dots, dist_m, v_centers)
 
